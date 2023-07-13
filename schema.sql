@@ -16,6 +16,9 @@ CREATE TABLE animals (
     escape_attempts INT,
     neutered BOOLEAN,
     weight_kg DECIMAL,
-    species_id INT REFERENCES species(id),
-    owner_id INT REFERENCES owners(id)
+    species INT 
 )
+
+ALTER TABLE animals DROP column species;
+ALTER TABLE animals ADD species_id int REFERENCES species(id);
+ALTER TABLE animals ADD owner_id int REFERENCES owners(id);

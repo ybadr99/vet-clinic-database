@@ -63,10 +63,12 @@ WHERE species.name = 'Pokemon';
 -- List all owners and their animals, remember to include those that don't own any animal.
 SELECT owners.full_name AS owner_name , animals.name AS animal_name
 FROM owners
-INNER JOIN animals ON owners.id = animals.owner_id; 
+LEFT JOIN animals ON owners.id = animals.owner_id; 
 -- How many animals are there per species?
-SELECT species.name, count(*) FROM animals
-INNER JOIN species ON animals.species_id = species.id GROUP BY species.name;
+SELECT species.name, COUNT(*) FROM animals
+INNER JOIN species ON animals.species_id = species.id
+INNER JOIN owners ON animals.owner_id = owners.id
+GROUP BY species.name;
 -- List all Digimon owned by Jennifer Orwell.
 SELECT * FROM animals 
 INNER JOIN owners ON animals.owner_id = owners.id
