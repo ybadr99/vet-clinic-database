@@ -14,7 +14,7 @@ This repository includes files with plain SQL that can be used to recreate a dat
 
 # 📗 Table of Contents
 
-- [curriculum-databases-projects-template](#curriculum-databases-projects-template)
+- [Vet Clinic](#vet-clinic)
   - [Getting Started](#getting-started)
 - [📗 Table of Contents](#-table-of-contents)
 - [📖 vet-clinic-database ](#-vet-clinic-database-)
@@ -154,6 +154,6 @@ I would like to thank Microverse staff for their support
 
 ## 📝 License <a name="license"></a>
 
-This project is [MIT](./LICENSE) licensed.
+This project is [MIT](./LICENSE.md) licensed.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
