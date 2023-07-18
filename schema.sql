@@ -43,3 +43,12 @@ CREATE TABLE visits (
     animals_id INT REFERENCES animals(id),
     date Date NOT NULL
 );
+
+-- Add an email column to your owners table
+ALTER TABLE owners ADD COLUMN email VARCHAR(120);
+
+-- Add indexing
+CREATE INDEX idx_visits_animal_id ON visits(animal_id);
+
+
+
