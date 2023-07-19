@@ -1,13 +1,13 @@
 CREATE TABLE owners (
     id INT PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
     full_name VARCHAR(255) NOT NULL,
-    age INT NOT NULL
-)
+    age INT
+);
 
 CREATE TABLE species (
     id INT PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
     name VARCHAR(255) NOT NULL
-)
+);
 
 CREATE TABLE animals (
     id INT PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
@@ -17,7 +17,7 @@ CREATE TABLE animals (
     neutered BOOLEAN,
     weight_kg DECIMAL,
     species INT 
-)
+);
 
 
 ALTER TABLE animals DROP column species;
@@ -33,15 +33,15 @@ CREATE TABLE vets (
 
 CREATE TABLE specializations (
     id INT PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
-    vets_id INT REFERENCES vets(id),
+    vet_id INT REFERENCES vets(id),
     species_id INT REFERENCES species(id)
 );
 
 CREATE TABLE visits (
     id INT PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
-    vets_id INT REFERENCES vets(id),
-    animals_id INT REFERENCES animals(id),
-    date Date NOT NULL
+    vet_id INT REFERENCES vets(id),
+    animal_id INT REFERENCES animals(id),
+    date_of_visit Date NOT NULL
 );
 
 -- Add an email column to your owners table

@@ -41,88 +41,87 @@ INSERT INTO vets (name,age,date_of_graduation) VALUES ('Stephanie Mendez', 64, '
 INSERT INTO vets (name,age,date_of_graduation) VALUES ('Jack Harkness', 38, '2008-6-8');
 
 -- specialties data: 
-INSERT INTO specializations (vets_id, species_id) VALUES (1, 1);
-INSERT INTO specializations (vets_id, species_id) VALUES (3, 1);
-INSERT INTO specializations (vets_id, species_id) VALUES (3, 2);
-INSERT INTO specializations (vets_id, species_id) VALUES (4, 2);
+INSERT INTO specializations (vet_id, species_id) VALUES (1, 1);
+INSERT INTO specializations (vet_id, species_id) VALUES (3, 1);
+INSERT INTO specializations (vet_id, species_id) VALUES (3, 2);
+INSERT INTO specializations (vet_id, species_id) VALUES (4, 2);
 
 
 -- visits data:
 
 -- Agumon visits
-INSERT INTO visits (vets_id, animals_id, date_of_visit)
+INSERT INTO visits (vet_id, animal_id, date_of_visit)
 VALUES (1, 1, '2020-05-24');
 
-INSERT INTO visits (vets_id, animals_id, date_of_visit)
+INSERT INTO visits (vet_id, animal_id, date_of_visit)
 VALUES (1, 3, '2020-07-22');
 
 -- Gabumon visits
-INSERT INTO visits (vets_id, animals_id, date_of_visit)
+INSERT INTO visits (vet_id, animal_id, date_of_visit)
 VALUES (2, 2, '2021-02-02');
 
 -- Pikachu visits
-INSERT INTO visits (vets_id, animals_id, date_of_visit)
+INSERT INTO visits (vet_id, animal_id, date_of_visit)
 VALUES (2, 3, '2020-01-05');
 
-INSERT INTO visits (vets_id, animals_id, date_of_visit)
+INSERT INTO visits (vet_id, animal_id, date_of_visit)
 VALUES (2, 3, '2020-03-08');
 
-INSERT INTO visits (vets_id, animals_id, date_of_visit)
+INSERT INTO visits (vet_id, animal_id, date_of_visit)
 VALUES (2, 3, '2020-05-14');
 
 -- Devimon visits
-INSERT INTO visits (vets_id, animals_id, date_of_visit)
+INSERT INTO visits (vet_id, animal_id, date_of_visit)
 VALUES (3, 4, '2021-05-04');
 
 -- Charmander visits
-INSERT INTO visits (vets_id, animals_id, date_of_visit)
+INSERT INTO visits (vet_id, animal_id, date_of_visit)
 VALUES (4, 5, '2021-02-24');
 
 -- Plantmon visits
-INSERT INTO visits (vets_id, animals_id, date_of_visit)
+INSERT INTO visits (vet_id, animal_id, date_of_visit)
 VALUES (4, 6, '2019-12-21');
 
-INSERT INTO visits (vets_id, animals_id, date_of_visit)
+INSERT INTO visits (vet_id, animal_id, date_of_visit)
 VALUES (1, 6, '2020-08-10');
 
-INSERT INTO visits (vets_id, animals_id, date_of_visit)
+INSERT INTO visits (vet_id, animal_id, date_of_visit)
 VALUES (4, 6, '2021-04-07');
 
 -- Squirtle visits
-INSERT INTO visits (vets_id, animals_id, date_of_visit)
+INSERT INTO visits (vet_id, animal_id, date_of_visit)
 VALUES (3, 7, '2019-09-29');
 
 -- Angemon visits
-INSERT INTO visits (vets_id, animals_id, date_of_visit)
+INSERT INTO visits (vet_id, animal_id, date_of_visit)
 VALUES (2, 8, '2020-10-03');
 
-INSERT INTO visits (vets_id, animals_id, date_of_visit)
+INSERT INTO visits (vet_id, animal_id, date_of_visit)
 VALUES (2, 8, '2020-11-04');
 
 -- Boarmon visits
-INSERT INTO visits (vets_id, animals_id, date_of_visit)
+INSERT INTO visits (vet_id, animal_id, date_of_visit)
 VALUES (2, 9, '2019-01-24');
 
-INSERT INTO visits (vets_id, animals_id, date_of_visit)
+INSERT INTO visits (vet_id, animal_id, date_of_visit)
 VALUES (2, 9, '2019-05-15');
 
-INSERT INTO visits (vets_id, animals_id, date_of_visit)
+INSERT INTO visits (vet_id, animal_id, date_of_visit)
 VALUES (2, 9, '2020-02-27');
 
-INSERT INTO visits (vets_id, animals_id, date_of_visit)
+INSERT INTO visits (vet_id, animal_id, date_of_visit)
 VALUES (2, 9, '2020-08-03');
 
 -- Blossom visits
-INSERT INTO visits (vets_id, animals_id, date_of_visit)
+INSERT INTO visits (vet_id, animal_id, date_of_visit)
 VALUES (3, 10, '2020-05-24');
 
-INSERT INTO visits (vets_id, animals_id, date_of_visit)
+INSERT INTO visits (vet_id, animal_id, date_of_visit)
 VALUES (1, 10, '2021-01-11');
 
 
 
 -- This will add 3.594.280 visits considering you have 10 animals, 4 vets, and it will use around ~87.000 timestamps (~4min approx.)
-INSERT INTO visits (animal_id, vet_id, date_of_visit) SELECT * FROM (SELECT id FROM animals) animal_ids, (SELECT id FROM vets) vets_ids, generate_series('1980-01-01'::timestamp, '2021-01-01', '4 hours') visit_timestamp;
-
+INSERT INTO visits (animal_id, vet_id, date_of_visit) SELECT * FROM (SELECT id FROM animals) animal_ids, (SELECT id FROM vets) vet_ids, generate_series('1980-01-01'::timestamp, '2021-01-01', '4 hours') visit_timestamp;
 -- This will add 2.500.000 owners with full_name = 'Owner <X>' and email = 'owner_<X>@email.com' (~2min approx.)
 insert into owners (full_name, email) select 'Owner ' || generate_series(1,2500000), 'owner_' || generate_series(1,2500000) || '@mail.com';
